@@ -28,24 +28,25 @@ export default function Home() {
             </div>
           </div>
           <div className="h-5/6 w-full flex flex-col justify-start items-center">
-            {patientList?.data?.map((patient, idx) => {
-              return (
-                <Link
-                  to={`/patient/${patient._id}/info`}
-                  key={idx}
-                  className="h-1/5 w-11/12 flex justify-start items-center mb-3 rounded-xl border-0"
-                >
-                  <img src={null} className="h-full w-1/5 mx-3" />
-                  <div className="bg-lightGray h-full w-4/5 flex flex-col justify-center items-start rounded-2xl shadow-xl">
-                    <div>Name: {patient.name}</div>
-                    <div>
-                      Birth:{" "}
-                      {patient.birthDate && formatDate(patient.birthDate)}
+            {patientList?.success &&
+              patientList?.data?.map((patient, idx) => {
+                return (
+                  <Link
+                    to={`/patient/${patient._id}/info`}
+                    key={idx}
+                    className="h-1/5 w-11/12 flex justify-start items-center mb-3 rounded-xl border-0"
+                  >
+                    <img src={null} className="h-full w-1/5 mx-3" />
+                    <div className="bg-lightGray h-full w-4/5 flex flex-col justify-center items-start rounded-2xl shadow-xl">
+                      <div>Name: {patient.name}</div>
+                      <div>
+                        Birth:{" "}
+                        {patient.birthDate && formatDate(patient.birthDate)}
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>
