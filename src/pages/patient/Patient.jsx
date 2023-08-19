@@ -39,19 +39,23 @@ function Patient() {
   }, [patientId]);
 
   return (
-    <div className="bg-extrabright rounded-2xl h-full w-11/12 mb-3 flex flex-col justify-between items-center border-0 shadow-xl">
+    <div className="bg-extrabright rounded-2xl h-full w-11/12 mb-3 flex flex-col justify-between items-center border-0 shadow-normal">
       <div className="h-1/2 w-11/12 flex flex-col justify-around items-start">
         <div>Name: {patientInfo.name}</div>
         <div>Birth: {patientInfo.birth}</div>
         <div>Height: 187.4cm</div>
         <div>Weight: 78kg</div>
       </div>
-      <div className="bg-white h-1/2 w-11/12 mb-3 flex flex-col space-around items-center border-0 shadow-2xl rounded-2xl">
-        <div className="h-1/3 w-full flex justify-center items-center text-center">Treatment History</div>
-        <div className="h-2/3 w-full grid place-items-center overflow-y-scroll scrollbar-hide">
+      <div className="bg-white h-1/2 w-11/12 mb-3 flex flex-col space-around items-center border-0 shadow-normal rounded-2xl">
+        <div className="h-1/3 w-full flex justify-center items-center text-center">
+          Treatment History
+        </div>
+        <div className="h-2/3 w-full pb-3 grid place-items-center overflow-y-scroll scrollbar-hide">
           {records?.map((record, idx) => {
             return (
-              <div key={idx} className="h-12 w-11/12 flex flex-start items-center pl-3 my-1 rounded-xl border-0 shadow-xl bg-extrabright">
+              <div
+                key={idx}
+                className="h-12 w-11/12 flex flex-start items-center pl-3 my-1 rounded-xl border-0 shadow-normal bg-extrabright">
                 {record.date} | {record.content}
               </div>
             );

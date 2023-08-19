@@ -44,14 +44,22 @@ function Diag() {
         date: "2023-08-17",
       },
     ]);
-  }, [diags]);
+  }, []);
 
   if (selectedId !== undefined) return <Info id={selectedId} />;
   else
     return (
-      <div className="bg-extrabright h-full w-11/12 mb-3 overflow-scroll grid place-items-center scrollbar-hide rounded-2xl shadow-xl">
+      <div className="bg-white h-full w-11/12 mb-3 overflow-scroll grid place-items-center scrollbar-hide rounded-2xl shadow-normal">
         {diags.map((detail, idx) => {
-          return <Card key={idx} id={detail.diagsId} title={detail.name} date={detail.date} setSelectedId={setSelectedId} />;
+          return (
+            <Card
+              key={idx}
+              id={detail.diagsId}
+              title={detail.name}
+              date={detail.date}
+              setSelectedId={setSelectedId}
+            />
+          );
         })}
       </div>
     );
