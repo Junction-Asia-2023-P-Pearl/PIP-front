@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
 import HomeHeader from "./HomeHeader";
 
 export default function Home() {
   const patientInfo = [
     {
       profileImgSrc: "src/assets/react.svg",
+      patientId: "1",
       name: "TaeYoon Kim",
       birth: "2001-06-26",
     },
     {
       profileImgSrc: "src/assets/react.svg",
+      patientId: "2",
       name: "DaeHee Han",
       birth: "2003-04-01",
     },
@@ -26,7 +29,8 @@ export default function Home() {
         <div className="h-5/6 w-full flex flex-col justify-start items-center">
           {patientInfo.map((patient, idx) => {
             return (
-              <div
+              <Link
+                to={`/patient/${patient.patientId}`}
                 key={idx}
                 className="h-1/5 w-11/12 flex justify-start items-center mb-3 rounded-xl border border-black">
                 <img
@@ -37,7 +41,7 @@ export default function Home() {
                   <div>Name: {patient.name}</div>
                   <div>Birth: {patient.birth}</div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

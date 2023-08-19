@@ -11,7 +11,7 @@ export default function HomeHeader() {
             <div>We wish the patient a speedy recovery.</div>
           </div>
           <div>
-            <img src="src\assets\react.svg" />
+            <img src="src/assets/react.svg" />
           </div>
         </div>
       </div>

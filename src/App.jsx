@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
+import Patient from "./pages/patient/Patient";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -9,6 +10,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/patient/:patientId",
+    element: <Patient />,
   },
   {
     path: "/about",
