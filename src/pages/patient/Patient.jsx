@@ -6,11 +6,21 @@ import PatientNav from "./PatientNav";
 export default function Patient() {
   const [page, setPage] = useState("");
 
-  if (page === "detail") return <div></div>;
-  if (page === "diag") return <div></div>;
+  if (page === "detail")
+    return (
+      <PatientLayout setPage={setPage}>
+        <Detail />
+      </PatientLayout>
+    );
+  if (page === "diag")
+    return (
+      <PatientLayout setPage={setPage}>
+        <Diag />
+      </PatientLayout>
+    );
   return (
-    <PatientLayout>
-      <Information setPage={setPage} />
+    <PatientLayout setPage={setPage}>
+      <Information />
     </PatientLayout>
   );
 }
@@ -59,4 +69,12 @@ function Information() {
       </div>
     </div>
   );
+}
+
+function Detail() {
+  return <div>Detail</div>;
+}
+
+function Diag() {
+  return <div>Diag</div>;
 }
