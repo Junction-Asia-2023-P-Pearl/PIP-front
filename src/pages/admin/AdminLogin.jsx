@@ -1,5 +1,5 @@
 import AdminLoginForm from "./AdminLoginForm";
-import Profile from "../../assets/ProfileImage.JPG";
+import Profile from "../../assets/ProfileImage.jpg";
 
 export default function AdminLogin() {
   return (
