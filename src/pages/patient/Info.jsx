@@ -1,4 +1,8 @@
+import { API } from "../../api/API";
+
 export default function Info({ id }) {
+  const { data: diagInfo } = API.getMedicine(id);
+
   return (
     <div className="h-full w-11/12 mb-6 border-0 bg-extrabright rounded-2xl shadow-normal">
       <div className="h-1/2 w-full flex flex-col justify-center items-center">
