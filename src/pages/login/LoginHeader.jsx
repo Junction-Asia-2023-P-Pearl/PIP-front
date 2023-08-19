@@ -9,7 +9,7 @@ export default function LoginHeader() {
           <div className="text-l font-['caveat']">Enter your ID and Password</div>
         </div>
         <div className="h-1/2 w-1/2 flex justify-center items-center">
-          <img src="src\assets\react.svg" className="rounded-full shadow-xl h-full w-full" />
+          <img src="src\assets\ProfileImage.JPG" className="rounded-full shadow-xl h-full w-full" />
         </div>
       </div>
     </div>
