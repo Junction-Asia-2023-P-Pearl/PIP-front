@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { ajax } from "./api";
+import { ajax } from "./API";
 
 const getGuardianMe = ({ accessToken }) => {
   const options = {

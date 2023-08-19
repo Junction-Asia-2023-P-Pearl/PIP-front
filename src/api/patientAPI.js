@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "react-query";
-import { ajax } from "./api";
+import { ajax } from "./API";
 
 const getPatients = ({ accessToken }) => {
   const options = {
