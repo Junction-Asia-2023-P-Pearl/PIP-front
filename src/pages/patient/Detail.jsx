@@ -48,7 +48,7 @@ function Detail() {
   if (selectedId !== undefined) return <Info id={selectedId} />;
   else
     return (
-      <div className="h-full w-11/12 mb-3 overflow-scroll grid place-items-center scrollbar-hide round-2xl bg-extrabright rounded-2xl shadow-xl">
+      <div className="h-full w-11/12 mb-3 overflow-scroll grid place-items-center scrollbar-hide round-2xl bg-white rounded-2xl shadow-normal">
         {details.map((detail, idx) => {
           return (
             <Card
