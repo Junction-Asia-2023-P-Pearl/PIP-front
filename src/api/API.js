@@ -4,8 +4,9 @@ import guardianAPI from "./guardianAPI";
 import medicineAPI from "./medicineAPI";
 import patientAPI from "./patientAPI";
 import medicineReportAPI from "./medicineReportAPI";
+import diagnosisAPI from "./diagnosisAPI";
 
-axios.defaults.baseURL = import.meta.env.REACT_APP_API_URL;
+axios.defaults.baseURL = "http://do-home.duckdns.org:3001/api";
 
 export const ajax = async (options) => {
   if (options?.headers?.Authorization === "Bearer ")
@@ -27,7 +28,7 @@ const login = () => {
       method: "POST",
       url: "/auth/login",
       data: {
-        loginId,
+        id: loginId,
         password,
       },
     })
@@ -47,11 +48,14 @@ const adminLogin = () => {
   );
 };
 
-export const API = {
+const API = {
   login,
   adminLogin,
   ...guardianAPI,
   ...medicineAPI,
   ...patientAPI,
   ...medicineReportAPI,
+  ...diagnosisAPI,
 };
+
+export default API;

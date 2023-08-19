@@ -6,7 +6,7 @@ export default function PatientNav() {
 
   const linkData = [
     {
-      path: `/patient/${patientId}`,
+      path: `/patient/${patientId}/info`,
       clickPage: "",
       title: "Information",
     },
@@ -29,10 +29,11 @@ export default function PatientNav() {
           to={data.path}
           key={idx}
           className={`${
-            data.path === pathname
+            pathname.includes(data.path)
               ? "bg-bright shadow-inner"
               : "bg-extrabright shadow-normal"
-          } h-1/2 w-1/3 mx-3 rounded-2xl flex justify-center items-center border-0`}>
+          } h-1/2 w-1/3 mx-3 rounded-2xl flex justify-center items-center border-0`}
+        >
           {data.title}
         </Link>
       ))}

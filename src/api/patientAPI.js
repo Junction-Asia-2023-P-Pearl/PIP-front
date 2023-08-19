@@ -25,7 +25,7 @@ const getPatient = ({ id, accessToken }) => {
 
 const createPatient = ({ accessToken }) => {
   return useMutation(
-    ({ name, birthDate, gender, height, weight, detail, guradianId }) =>
+    ({ name, birthDate, gender, height, weight, caution, guradianId }) =>
       ajax({
         method: "POST",
         url: "/patient",
@@ -38,7 +38,7 @@ const createPatient = ({ accessToken }) => {
           gender,
           height,
           weight,
-          detail,
+          caution,
           guradianId,
         },
       })
@@ -47,7 +47,7 @@ const createPatient = ({ accessToken }) => {
 
 const updatePatient = ({ accessToken }) => {
   return useMutation(
-    ({ id, name, birthDate, gender, height, weight, detail, guradianId }) =>
+    ({ id, name, birthDate, gender, height, weight, caution, guradianId }) =>
       ajax({
         method: "PUT",
         url: `/patient/${id}`,
@@ -60,7 +60,7 @@ const updatePatient = ({ accessToken }) => {
           gender,
           height,
           weight,
-          detail,
+          caution,
           guradianId,
         },
       })

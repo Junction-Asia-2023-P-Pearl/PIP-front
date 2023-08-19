@@ -1,68 +1,33 @@
-import { useEffect, useState } from "react";
-import Info from "./Info";
+import { useParams } from "react-router";
 import Card from "./Card";
+import { useSelector } from "react-redux";
+import API from "../../api/API";
+import Avator from "../../assets/avator.png";
 
 function Diag() {
-  const [diags, setDiags] = useState([]);
-  const [selectedId, setSelectedId] = useState();
+  const { patientId } = useParams();
+  const { accessToken } = useSelector((state) => state.userAuth);
 
-  useEffect(() => {
-    setDiags([
-      {
-        diagsId: 1,
-        name: "Diagnosis 1",
-        date: "2023-08-17",
-      },
-      {
-        diagsId: 2,
-        name: "Diagnosis 2",
-        date: "2023-08-17",
-      },
-      {
-        diagsId: 3,
-        name: "Diagnosis 3",
-        date: "2023-08-17",
-      },
-      {
-        diagsId: 3,
-        name: "Diagnosis 3",
-        date: "2023-08-17",
-      },
-      {
-        diagsId: 3,
-        name: "Diagnosis 3",
-        date: "2023-08-17",
-      },
-      {
-        diagsId: 3,
-        name: "Diagnosis 3",
-        date: "2023-08-17",
-      },
-      {
-        diagsId: 3,
-        name: "Diagnosis 3",
-        date: "2023-08-17",
-      },
-    ]);
-  }, []);
+  const { data: diagList } = API.getDiagnosiesByPatientId({
+    accessToken,
+    patientId,
+  });
 
-  if (selectedId !== undefined) return <Info id={selectedId} />;
-  else
-    return (
-      <div className="bg-white h-full w-11/12 mb-3 overflow-scroll grid place-items-center scrollbar-hide rounded-2xl shadow-normal">
-        {diags.map((detail, idx) => {
-          return (
-            <Card
-              key={idx}
-              id={detail.diagsId}
-              title={detail.name}
-              date={detail.date}
-              setSelectedId={setSelectedId}
-            />
-          );
-        })}
-      </div>
-    );
+  return (
+    <div className="bg-white h-full w-11/12 mb-3 overflow-scroll grid place-items-center scrollbar-hide rounded-2xl shadow-normal">
+      {diagList?.data?.map((diag) => {
+        return (
+          <Card
+            key={diag._id}
+            image={Avator}
+            link={`/patient/${patientId}/diag/${diag._id}`}
+            title={diag.title}
+            date={diag.createdAt}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
 export default Diag;

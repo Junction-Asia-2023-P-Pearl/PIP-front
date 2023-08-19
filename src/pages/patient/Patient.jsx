@@ -1,65 +1,47 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import API from "../../api/API";
+import { useSelector } from "react-redux";
+
+const formatDate = (date) => {
+  const dateObj = new Date(date);
+  const year = dateObj.getFullYear();
+  const month = dateObj.getMonth() + 1;
+  const day = dateObj.getDate();
+  return `${year}-${month}-${day}`;
+};
 
 function Patient() {
+  const { accessToken } = useSelector((state) => state.userAuth);
   const { patientId } = useParams();
-  const [patientInfo, setPatientInfo] = useState({});
-  const [records, setRecords] = useState([]);
 
-  useEffect(() => {
-    setPatientInfo({
-      profileImgSrc: "src/assets/react.svg",
-      patientId: "1",
-      name: "TaeYoon Kim",
-      birth: "2001-06-26",
-    });
-
-    setRecords([
-      {
-        date: "2023-08-16",
-        content: "cyst removal surgery",
-      },
-      {
-        date: "2023-08-17",
-        content: "hospitalization",
-      },
-      {
-        date: "2023-08-18",
-        content: "postoperative care",
-      },
-      {
-        date: "2023-08-18",
-        content: "postoperative care",
-      },
-      {
-        date: "2023-08-18",
-        content: "postoperative care",
-      },
-    ]);
-  }, [patientId]);
-
+  const { data: patientInfo } = API.getPatient({ id: patientId, accessToken });
   return (
-    <div className="bg-extrabright rounded-2xl h-full w-11/12 mb-3 flex flex-col justify-between items-center border-0 shadow-normal">
-      <div className="h-1/2 w-11/12 flex flex-col justify-around items-start">
-        <div>Name: {patientInfo.name}</div>
-        <div>Birth: {patientInfo.birth}</div>
-        <div>Height: 187.4cm</div>
-        <div>Weight: 78kg</div>
-      </div>
-      <div className="bg-white h-1/2 w-11/12 mb-3 flex flex-col space-around items-center border-0 shadow-normal rounded-2xl">
-        <div className="h-1/3 w-full flex justify-center items-center text-center">
-          Treatment History
+    <div className="bg-extrabright rounded-2xl p-7 h-full w-11/12 mb-3 flex flex-col justify-between items-center border-0 shadow-normal">
+      <div className="h-1/2 w-11/12 flex flex-col items-start">
+        <div className="flex w-full text-2xl font-light">
+          <p className="text-dark mr-2">Name</p>
+          <p>: {patientInfo?.data?.name}</p>
         </div>
-        <div className="h-2/3 w-full pb-3 grid place-items-center overflow-y-scroll scrollbar-hide">
-          {records?.map((record, idx) => {
-            return (
-              <div
-                key={idx}
-                className="h-12 w-11/12 flex flex-start items-center pl-3 my-1 rounded-xl border-0 shadow-normal bg-extrabright">
-                {record.date} | {record.content}
-              </div>
-            );
-          })}
+        <div className="flex w-full my-5 text-lg font-light">
+          <p className="text-dark mr-2">Birth</p>
+          <p>
+            :{" "}
+            {patientInfo?.data?.birthDate &&
+              formatDate(patientInfo.data.birthDate)}
+          </p>
+        </div>
+        <div className="flex w-full text-lg font-light">
+          <p className="text-dark mr-2">Weight</p>
+          <p>: {patientInfo?.data?.weight}kg</p>
+        </div>
+        <div className="flex w-full text-lg font-light">
+          <p className="text-dark mr-2">Height</p>
+          <p>: {patientInfo?.data?.height}cm</p>
+        </div>
+        <div className="flex border-t-2 border-bright flex-col w-full mt-5 pt-5 text-lg font-light">
+          <p className="text-red-400 text-xl">Caution</p>
+          <p className="whitespace-pre-line">{patientInfo?.data?.caution}</p>
         </div>
       </div>
     </div>
