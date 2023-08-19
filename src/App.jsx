@@ -1,19 +1,19 @@
-import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./pages/login/Login";
+import Home from "./pages/home/Home";
+import Patient from "./pages/patient/Patient";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <h1>main page</h1>
-        <Link to={"/about"}>About</Link>
-        <Link to={"/login"}>Login</Link>
-      </div>
-    ),
+    element: <Home />,
   },
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/patient/:patientId",
+    element: <Patient />,
   },
   {
     path: "/about",
