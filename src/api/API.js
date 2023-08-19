@@ -5,7 +5,7 @@ import medicineAPI from "./medicineAPI";
 import patientAPI from "./patientAPI";
 import medicineReportAPI from "./medicineReportAPI";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = import.meta.env.REACT_APP_API_URL;
 
 export const ajax = async (options) => {
   if (options?.headers?.Authorization === "Bearer ")
