@@ -1,4 +1,5 @@
 import AdminLoginForm from "./AdminLoginForm";
+import Profile from "../../assets/ProfileImage.JPG";
 
 export default function AdminLogin() {
   return (
@@ -16,7 +17,7 @@ export default function AdminLogin() {
             </div>
             <div className="h-1/2 w-1/2 flex justify-center items-center">
               <img
-                src="src\assets\ProfileImage.JPG"
+                src={Profile}
                 className="rounded-full shadow-xl h-full w-full"
               />
             </div>
