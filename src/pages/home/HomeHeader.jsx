@@ -7,12 +7,12 @@ export default function HomeHeader() {
       <div className="h-2/5 w-full flex justify-between items-center pl-2">
         <Link
           to="/"
-          className="h-full flex justify-start items-center text-5xl"
+          className="font-['pacifico'] h-full flex justify-start items-center text-4xl"
         >
           PIP
         </Link>
         <div className="h-full flex mr-3 justify-end items-center">
-          <div className="text-xs mr-3">
+          <div className="font-['caveat'] text-xs mr-3">
             <div>Hi, Jimin.</div>
             <div>We wish the patient a speedy recovery.</div>
           </div>
@@ -21,8 +21,8 @@ export default function HomeHeader() {
           </div>
         </div>
       </div>
-      <div className="h-2/5 w-full flex justify-center items-center border border-black">
-        Lorem ipsum dolor sit, amet consectetur
+      <div className="bg-bright font-['caveat'] h-2/5 w-full flex justify-center items-center border-0">
+        Announcement: Lorem ipsum dolor sit, amet consectetur
       </div>
     </div>
   );

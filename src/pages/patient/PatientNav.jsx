@@ -7,7 +7,7 @@ export default function PatientNav({ setPage }) {
     <div className="h-1/6 w-full flex justify-start items-center">
       <Link
         to={`/patient/${patientId}`}
-        className="h-1/3 w-1/3 mx-3 rounded-md flex justify-center items-center border border-black"
+        className="bg-extrabright h-1/2 w-1/3 mx-3 rounded-2xl flex justify-center items-center border-0"
         onClick={() => {
           setPage("");
         }}
@@ -16,7 +16,7 @@ export default function PatientNav({ setPage }) {
       </Link>
       <Link
         to={`/patient/${patientId}/detail`}
-        className="h-1/3 w-1/3 mx-3 rounded-md flex justify-center items-center border border-black"
+        className="bg-extrabright h-1/2 w-1/3 mx-3 rounded-2xl flex justify-center items-center border-0"
         onClick={() => {
           setPage("detail");
         }}
@@ -25,7 +25,7 @@ export default function PatientNav({ setPage }) {
       </Link>
       <Link
         to={`/patient/${patientId}/diag`}
-        className="h-1/3 w-1/3 mx-3 rounded-md flex justify-center items-center border border-black"
+        className="bg-extrabright h-1/2 w-1/3 mx-3 rounded-2xl flex justify-center items-center border-0"
         onClick={() => {
           setPage("diag");
         }}
