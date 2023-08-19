@@ -1,29 +1,5 @@
 import { useParams } from "react-router-dom";
-import HomeHeader from "../home/HomeHeader";
 import { useEffect, useState } from "react";
-import PatientNav from "./PatientNav";
-
-export default function Patient() {
-  const [page, setPage] = useState("");
-
-  if (page === "detail")
-    return (
-      <PatientLayout setPage={setPage}>
-        <Detail />
-      </PatientLayout>
-    );
-  if (page === "diag")
-    return (
-      <PatientLayout setPage={setPage}>
-        <Diag />
-      </PatientLayout>
-    );
-  return (
-    <PatientLayout setPage={setPage}>
-      <Information />
-    </PatientLayout>
-  );
-}
 
 function PatientLayout({ children, setPage }) {
   return (
@@ -37,9 +13,11 @@ function PatientLayout({ children, setPage }) {
   );
 }
 
-function Information() {
+function Patient() {
   const { patientId } = useParams();
   const [patientInfo, setPatientInfo] = useState({});
+  const [records, setRecords] = useState([]);
+
   useEffect(() => {
     setPatientInfo({
       profileImgSrc: "src/assets/react.svg",
@@ -47,6 +25,29 @@ function Information() {
       name: "TaeYoon Kim",
       birth: "2001-06-26",
     });
+
+    setRecords([
+      {
+        date: "2023-08-16",
+        content: "cyst removal surgery",
+      },
+      {
+        date: "2023-08-17",
+        content: "hospitalization",
+      },
+      {
+        date: "2023-08-18",
+        content: "postoperative care",
+      },
+      {
+        date: "2023-08-18",
+        content: "postoperative care",
+      },
+      {
+        date: "2023-08-18",
+        content: "postoperative care",
+      },
+    ]);
   }, [patientId]);
 
   return (
@@ -57,24 +58,25 @@ function Information() {
         <div>Height: 187.4cm</div>
         <div>Weight: 78kg</div>
       </div>
-      <div className="rounded-2xl h-1/2 w-11/12 mb-3 border border-black">
-        <div className="bg-white">
+      <div className="h-1/2 w-11/12 mb-3 flex flex-col space-around items-center border border-black">
+        <div className="h-1/3 w-full flex justify-center items-center text-center">
           Treatment History
-          <div>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-          </div>
+        </div>
+        <div className="h-2/3 w-full grid place-items-center overflow-y-scroll scrollbar-hide">
+          {records?.map((record, idx) => {
+            return (
+              <div
+                key={idx}
+                className="h-12 w-11/12 flex flex-start items-center pl-3 my-1 rounded-xl border border-black"
+              >
+                {record.date} | {record.content}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-function Detail() {
-  return <div>Detail</div>;
-}
-
-function Diag() {
-  return <div>Diag</div>;
-}
+export default Patient;
