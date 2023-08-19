@@ -31,9 +31,7 @@ function PatientLayout({ children, setPage }) {
       <HomeHeader />
       <div className="h-4/5 w-full border border-black">
         <PatientNav setPage={setPage} />
-        <div className="h-5/6 w-full flex flex-col justify-start items-center">
-          {children}
-        </div>
+        <div className="h-5/6 w-full flex flex-col justify-start items-center">{children}</div>
       </div>
     </div>
   );
@@ -52,19 +50,21 @@ function Information() {
   }, [patientId]);
 
   return (
-    <div className="h-full w-11/12 mb-3 flex flex-col justify-between items-center border border-black">
-      <div className="h-1/2 w-11/12 flex flex-col justify-around items-start">
+    <div className="rounded-2xl h-full w-11/12 mb-3 flex flex-col justify-between items-center border border-black">
+      <div className="bg-extrabright h-1/2 w-11/12 flex flex-col justify-around items-start">
         <div>Name: {patientInfo.name}</div>
         <div>Birth: {patientInfo.birth}</div>
         <div>Height: 187.4cm</div>
         <div>Weight: 78kg</div>
       </div>
-      <div className="h-1/2 w-11/12 mb-3 border border-black">
-        <div>Treatment History</div>
-        <div>
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
+      <div className="rounded-2xl h-1/2 w-11/12 mb-3 border border-black">
+        <div className="bg-white">
+          Treatment History
+          <div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+          </div>
         </div>
       </div>
     </div>
