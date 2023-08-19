@@ -1,18 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function PatientLayout({ children, setPage }) {
-  return (
-    <div className="h-screen w-screen">
-      <HomeHeader />
-      <div className="h-4/5 w-full border border-0">
-        <PatientNav setPage={setPage} />
-        <div className="h-5/6 w-full flex flex-col justify-start items-center">{children}</div>
-      </div>
-    </div>
-  );
-}
-
 function Patient() {
   const { patientId } = useParams();
   const [patientInfo, setPatientInfo] = useState({});
